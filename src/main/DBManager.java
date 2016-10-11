@@ -37,7 +37,7 @@ public class DBManager {
 		createTable(Wagon.class);
 		createTable(Train_moving_line.class);
 		createTable(Visit_station.class);
-		
+		createTable(Metro.class);
 	}
 	
 	public void createTable(Class<?> localClass) {

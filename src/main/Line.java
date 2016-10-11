@@ -17,6 +17,9 @@ public class Line {
 	@DatabaseField
 	private String name;
 	
+	@DatabaseField(foreign=true)
+	public Metro metro;
+	
 	public LinkedList<Station> stations;
 	
 	@ForeignCollectionField(eager=true)
