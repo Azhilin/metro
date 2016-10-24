@@ -2,12 +2,21 @@ package main;
 
 import java.sql.SQLException;
 
+import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 public class DBManager {
 	ConnectionSource connectionSource;
+	Dao<Driver, Integer> drivers;
+	Dao<Line, Integer> lines;
+	Dao<Passenger, Integer> passengers;
+	Dao<Station, Integer> stations;
+	Dao<Train, Integer> trains;
+	Dao<Wagon, Integer> wagons;
+	Dao<Train_moving_line, Integer> trnMvnLine;
+	Dao<Visit_station, Integer> visit_stations;
 	
 	private ConnectionSource dbConnector() {
 		
@@ -31,7 +40,7 @@ public class DBManager {
 	public void dbSetUp() {
 		createTable(Driver.class);
 		createTable(Line.class);
-		createTable(Passanger.class);
+		createTable(Passenger.class);
 		createTable(Station.class);
 		createTable(Train.class);
 		createTable(Wagon.class);

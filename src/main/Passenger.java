@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Passanger {
+public class Passenger {
 	@DatabaseField(id=true)
 	private int id;
 	
@@ -19,13 +19,13 @@ public class Passanger {
 	@DatabaseField(foreign=true)
 	public Wagon wagon;
 	
-	public Passanger(String name) {
+	public Passenger(String name) {
 		super();
 		this.name = name;
 		this.id = ++num;
 	}
 	
-	public Passanger() {
+	public Passenger() {
 		super();
 	}
 

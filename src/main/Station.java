@@ -20,10 +20,10 @@ public class Station {
 	@DatabaseField(foreign=true)
 	public Line line;
 	
-	public LinkedList<Passanger> passengers;
+	public LinkedList<Passenger> passengers;
 	
 	@ForeignCollectionField(eager=true)
-	public ForeignCollection<Passanger> passengersField;
+	public ForeignCollection<Passenger> passengersField;
 
 	public Station(String name) {
 		super();
