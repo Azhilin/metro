@@ -20,6 +20,8 @@ public class Station {
 	@DatabaseField(foreign=true)
 	public Line line;
 	
+	public LinkedList<Passenger> passengersInHall;
+	
 	public LinkedList<Passenger> passengers;
 	
 	@ForeignCollectionField(eager=true)
@@ -29,6 +31,7 @@ public class Station {
 		super();
 		this.name = name;
 		this.id = ++num;
+		this.passengersInHall = new LinkedList<>();
 		this.passengers = new LinkedList<>();
 	}
 	

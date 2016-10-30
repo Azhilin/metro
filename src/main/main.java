@@ -10,14 +10,62 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class main {
 
 	public static void main(String[] args) {
 		
+		Logger log = LogManager.getLogger();
+		
+		Station st = new Station("MyStation");
+		
+		Thread stationThread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				do {
+					Passenger pass = new Passenger();
+					st.passengersInHall.add(pass);
+					log.info("Passenger " + pass.id + " entered inside hall staion.");
+					
+					try {
+						Thread.sleep(150);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} while (true);
+				
+			}
+		});
+		
+		stationThread.start();
+		
+		Escalator esc1 = new Escalator(st, 800);
+		
+		Thread esc1Thread = new Thread(esc1);
+		
+		esc1Thread.start();
+		
+        Escalator esc2 = new Escalator(st, 1100);
+		
+		Thread esc2Thread = new Thread(esc2);
+		
+		esc2Thread.start();
+		
+        Escalator esc3 = new Escalator(st, 1400);
+		
+		Thread esc3Thread = new Thread(esc3);
+		
+		esc3Thread.start();
+		
+/*		
 		DBManager dbManager = new DBManager();
 		
 		dbManager.dbSetUp();
-/*		
+		
 		List<Wagon> depo = new ArrayList<>(50);
 		
 		Random rnd = new Random();

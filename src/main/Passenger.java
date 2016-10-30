@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Passenger {
 	@DatabaseField(id=true)
-	private int id;
+	public int id;
 	
 	private static int num = 0;
 	
@@ -18,7 +18,7 @@ public class Passenger {
 	
 	@DatabaseField(foreign=true)
 	public Wagon wagon;
-	
+
 	public Passenger(String name) {
 		super();
 		this.name = name;
@@ -27,6 +27,7 @@ public class Passenger {
 	
 	public Passenger() {
 		super();
+		this.id = ++num;
 	}
 
 }
