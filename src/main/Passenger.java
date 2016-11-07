@@ -11,7 +11,7 @@ public class Passenger implements IMetroElement {
 	private static int num = 0;
 	
 	@DatabaseField
-	private String name;
+	public String name;
 	
 	@DatabaseField(foreign=true)
 	public Station station;
@@ -28,6 +28,7 @@ public class Passenger implements IMetroElement {
 	public Passenger() {
 		super();
 		this.id = ++num;
+		this.name = "" + id;
 	}
 
 }

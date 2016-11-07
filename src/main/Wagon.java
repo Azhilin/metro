@@ -1,5 +1,9 @@
 package main;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -13,6 +17,8 @@ public class Wagon implements IMetroElement {
 	@DatabaseField
 	public boolean type;
 	
+	public List<Passenger> passengers;
+	
 	@DatabaseField(foreign=true)
 	public Train train;
 
@@ -20,6 +26,7 @@ public class Wagon implements IMetroElement {
 		super();
 		this.type = type;
 		this.id = ++num;
+		this.passengers = Collections.synchronizedList(new LinkedList<>());
 	}
 	
 	public Wagon() {

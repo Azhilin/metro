@@ -1,6 +1,8 @@
 package main;
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
@@ -20,9 +22,9 @@ public class Station implements IMetroElement {
 	@DatabaseField(foreign=true)
 	public Line line;
 	
-	public LinkedList<Passenger> passengersInHall;
+	public List<Passenger> passengersInHall;
 	
-	public LinkedList<Passenger> passengers;
+	public List<Passenger> passengers;
 	
 	@ForeignCollectionField(eager=true)
 	public ForeignCollection<Passenger> passengersField;
@@ -31,8 +33,8 @@ public class Station implements IMetroElement {
 		super();
 		this.name = name;
 		this.id = ++num;
-		this.passengersInHall = new LinkedList<>();
-		this.passengers = new LinkedList<>();
+		this.passengersInHall = Collections.synchronizedList(new LinkedList<>());
+		this.passengers = Collections.synchronizedList(new LinkedList<>());
 	}
 	
 	public Station() {

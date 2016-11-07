@@ -10,6 +10,10 @@ public class Visit_station {
 	@DatabaseField(id=true)
 	public int id;
 	
+	public Station station;
+	
+	public Train train;
+	
 	@DatabaseField(foreign=true)
 	public Train_moving_line trMovLine ;
 	
@@ -19,8 +23,10 @@ public class Visit_station {
 	@DatabaseField
 	public int passOut;
 
-	public Visit_station() {
+	public Visit_station(Station st, Train tr) {
 		super();
+		this.station = st;
+		this.train = tr;
 	}
 
 }
