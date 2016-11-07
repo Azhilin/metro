@@ -9,13 +9,16 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Train {
+public class Train implements IMetroElement {
 	@DatabaseField(id=true)
-	private int id;
+	public int id;
 	
 	private static int num = 0;
 	
 	private int count;
+	
+	@DatabaseField
+	private String name;
 	
 	@DatabaseField(foreign=true)
 	public Driver driver;
@@ -35,6 +38,15 @@ public class Train {
 		this.id = ++num;
 	}
 	
+	public Train(String trainName) {
+		super();
+		this.count = 0;
+		this.id = ++num;
+		this.name = trainName + id;
+		this.driver = new Driver("DefaultDriver" + id);
+		this.wagons = new LinkedList<>();
+	}
+
 	public void addWagon(Wagon wagon) {
 		if (wagon.type && !isFirst()) {
 			wagons.addFirst(wagon);;
@@ -48,7 +60,7 @@ public class Train {
 	
 	@Override
 	public String toString() {
-		return "\nTrain [id=" + id + ", wagons=" + wagons + "]";
+		return "\nTrain [id=" + id + ", name=" + name + ", wagons=" + wagons + "]";
 	}
 
 	public boolean isFull() {

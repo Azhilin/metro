@@ -10,9 +10,12 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Metro {
+public class Metro implements IMetroElement {
 	@DatabaseField(id=true)
 	private int id;
+	
+	@DatabaseField
+	public String name;
 	
 	public LinkedList<Line> lines;
 	

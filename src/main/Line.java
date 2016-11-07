@@ -8,7 +8,7 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Line {
+public class Line implements IMetroElement {
 	@DatabaseField(id=true)
 	private int id;
 	

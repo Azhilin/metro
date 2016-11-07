@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Wagon {
+public class Wagon implements IMetroElement {
 	@DatabaseField(id=true)
 	private int id;
 	

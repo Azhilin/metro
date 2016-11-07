@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Passenger {
+public class Passenger implements IMetroElement {
 	@DatabaseField(id=true)
 	public int id;
 	
@@ -21,7 +21,7 @@ public class Passenger {
 
 	public Passenger(String name) {
 		super();
-		this.name = name;
+		this.name = name + id;
 		this.id = ++num;
 	}
 	

@@ -6,14 +6,14 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Driver {
+public class Driver implements IMetroElement {
 	@DatabaseField(id=true)
 	private int id;
 	
 	private static int num = 0;
 	
 	@DatabaseField
-	private String name;
+	public String name;
 	
 	@DatabaseField
 	public int expLevel;
@@ -28,7 +28,7 @@ public class Driver {
 
 	public Driver(String name) {
 		super();
-		this.name = name;
+		this.name = name + id;
 		Random rnd = new Random();
 		this.expLevel = rnd.nextInt(10);
 		this.id = ++num;
@@ -40,7 +40,7 @@ public class Driver {
 	
 	public void expModify() {
 		Random rnd = new Random();
-		this.expLevel = this.expLevel + rnd.nextInt(7)-3;
+		this.expLevel = this.expLevel + rnd.nextInt(7)+1;
 	}
 
 }
